@@ -2,11 +2,54 @@
   .side-header
     %p.side-header__user-name 名前
     %ul.user-menu
-      %li.user-menu__edit-name edit
-      %li.user-menu__new-group newGroup
-  .side__group
+      %li.user-menu__edit-name
+        %a{:href => "#"} edit
+      %li.user-menu__new-group
+        %a{:href => "#"} newgroup
+  .side-groups
+    %a{:href => "#"}
+      .group
+        %p.group__group-name グループ名
+        %p.group__text-message テキスト・メッセージ
+    %a{:href => "#"}
+      .group
+        %p.group__group-name グループ名
+        %p.group__text-message テキスト・メッセージ
+    %a{:href => "#"}
+      .group
+        %p.group__group-name グループ名
+        %p.group__text-message テキスト・メッセージ
   
-.message
-  .message__title
-  .message__body
-  .message__input
+.main
+  .main-title
+    .group
+      %h2.group__name グループ名
+      %ul.member-list Member:
+      %li.member-list__member<
+        ユーザー名
+      %a{:href => "#"}
+        .edit-btn Edit
+  .main-body
+    .message-box
+      .upper-info
+        %p.upper-info__user ユーザー名
+        %p.upper-info__datatime 2019/05/01 19:20
+      %p.message-box__message おはようございます
+    .message-box
+      .upper-info
+        %p.upper-info__user ユーザー名
+        %p.upper-info__datatime 2019/05/01 19:20
+      %p.message-box__message おはようございます
+    .message-box
+      .upper-info
+        %p.upper-info__user ユーザー名
+        %p.upper-info__datatime 2019/05/01 19:20
+      %p.message-box__message おはようございます
+  .main-input
+    %form
+      %input
+      %input
+      .input-box
+        %input
+        %label.image-label 画像投稿ボタン
+      %input{:type => "submit", :value => "send"}

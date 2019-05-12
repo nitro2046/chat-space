@@ -23,19 +23,14 @@
         &__edit-name {
           display: list-item;
           text-align: -webkit-match-parent;
-          a {
-            color: white;
-            text-decoration: none;
-          }
         }
         &__new-group {
           display: list-item;
           text-align: -webkit-match-parent;
-          margin-left: 0.3rem;
-          a {
-            color: white;
-            text-decoration: none;
-            }           
+          margin-left: 0.3rem;          
+        }
+        .icon {
+          color: #ffffff;
         }
       }
   }

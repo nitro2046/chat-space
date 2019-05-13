@@ -1,0 +1,39 @@
+.main
+  .title
+    .group
+      %h2.group__name グループ名
+      %ul.member-list< 
+        Member:
+        %li.member-list__member<
+          ユーザー名1
+        %li.member-list__member<
+          ユーザー名2
+        %li.member-list__member<
+          ユーザー名3
+    = link_to do
+      .edit-btn
+        Edit
+  .body
+    .message-box
+      .upper-info
+        %p.upper-info__user ユーザー名
+        %p.upper-info__datatime 2019/05/01 19:20
+      %p.message-box__message おはようございます
+    .message-box
+      .upper-info
+        %p.upper-info__user ユーザー名
+        %p.upper-info__datatime 2019/05/01 19:20
+      %p.message-box__message おはようございます
+    .message-box
+      .upper-info
+        %p.upper-info__user ユーザー名
+        %p.upper-info__datatime 2019/05/01 19:20
+      %p.message-box__message おはようございます
+  .form
+    %form.new-message{:enctype => "multipart/form-data"}
+      .input-box
+        %input.input-box__text{:placeholder => "type a message", :type => "text", :name => ""}
+        %label.image-label
+          %i.fa.fa-image
+          %input.image-label__input{:type => "file", :name => "message[image]"}
+      %input.new-message__submit-btn{:type => "submit", :value => "send"}

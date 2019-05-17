@@ -30,10 +30,18 @@
         %p.upper-info__datatime 2019/05/01 19:20
       %p.message-box__message おはようございます
   .form
-    %form.new-message{:enctype => "multipart/form-data"}
-      .input-box
-        %input.input-box__text{:placeholder => "type a message", :type => "text", :name => ""}
-        %label.image-label
-          %i.fa.fa-image
-          %input.image-label__input{:type => "file", :name => "message[image]"}
-      %input.new-message__submit-btn{:type => "submit", :value => "send"}
+    = form_for [@group, @message] do |f|
+      = f.text_field :body, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
+  -# .form
+  -#   %form.new-message{:enctype => "multipart/form-data"}
+  -#     .input-box
+  -#       %input.input-box__text{:placeholder => "type a message", :type => "text", :name => ""}
+  -#       %label.image-label
+  -#         %i.fa.fa-image
+  -#         %input.image-label__input{:type => "file", :name => "message[image]"}
+  -#     %input.new-message__submit-btn{:type => "submit", :value => "send"}

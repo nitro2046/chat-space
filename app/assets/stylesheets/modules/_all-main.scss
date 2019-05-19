@@ -38,6 +38,7 @@
     width: 100%;
     height: calc(100vh - 190px);
     padding: 46px 40px;
+    overflow: scroll;
     .message-box {
       padding-bottom: 40px;
       .upper-info {
@@ -60,8 +61,7 @@
           margin-bottom: 10px;
       }
       &__image {
-        width: 100px;
-        height: 100px;
+        width: 800px;
       }
     }
   }

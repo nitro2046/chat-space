@@ -27,3 +27,5 @@ class MessagesController < ApplicationController
     @group = Group.find(params[:group_id])
   end
 end
+
+

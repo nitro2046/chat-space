@@ -8,7 +8,7 @@
         %li.member-list__member
           - @group.group_users.each do |group_user|
             = group_user.user.name
-    = link_to do
+    = link_to edit_group_path(@group.id) do
       .edit-btn
         Edit
   .body

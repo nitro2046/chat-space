@@ -38,6 +38,7 @@
     width: 100%;
     height: calc(100vh - 190px);
     padding: 46px 40px;
+    overflow: scroll;
     .message-box {
       padding-bottom: 40px;
       .upper-info {
@@ -59,49 +60,44 @@
           font-size: 14px;
           margin-bottom: 10px;
       }
+      &__image {
+        width: 800px;
+      }
     }
   }
   .form {
+    background-color: #DDDDDD;
+    box-sizing: border-box;
     height: 90px;
-    padding: 20px 40px;
-    background-color: #ddd;
-    .new-message {
-      display: flex;
+    padding: 20px 50px 20px 40px;
+    &__message {
+      border: none;
+      float: left;
       height: 50px;
-      .input-box {
-        position: relative;
-        width: 100%;
-        display: block;
-        margin: 0 10px;
-        float: left;
-        &__text {
-          height: 50px;
-          width: 100%;
-          padding: 0 40px 0 10px;
-          color: #434a54;
-          border-style: none;
-        }
-        .image-label {
-          font-size: 1.3rem;
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          cursor: pointer;
-          &__input {
-            display: none; 
-          }
-        }
+      width: calc(100% - 150px);
+    }
+    &__mask {
+      background-color: #ffffff;
+      float: left;
+      height: 50px;
+      padding-right: 10px;
+      &__image {
+        font-size: 20px;
+        line-height: 50px;
       }
-      &__submit-btn {
-        width: 100px;
-        height: 50px;
-        padding: 0 30px;
-        margin-left: 15px;
-        background-color: #38aef0;
-        color: white;
-        cursor: pointer; 
-        float: right;
+      .hidden {
+        display: none;
       }
+    }
+    &__submit {
+      background-color: #38AEF0;
+      border: none;
+      color: #ffffff;
+      float: right;
+      font-size: 16px;
+      height: 50px;
+      margin-left: 15px;
+      padding: 0 30px;
     }
   }
 }

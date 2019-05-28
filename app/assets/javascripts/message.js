@@ -36,10 +36,11 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.message-box').append(html);
-      $('.form__submit').prop( "disabled", false );     
+      $('.form__submit').prop( "disabled", false );
       $('.message-box').animate({scrollTop: $('.message-box')[0].scrollHeight});
       $('.form__message').val('');
       $('.hidden').val('');
+      $('form')[0].reset();
     })
 
     .fail(function(){

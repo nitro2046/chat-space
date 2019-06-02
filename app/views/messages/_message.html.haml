@@ -6,4 +6,4 @@
 - if message.body.present?
   %p#data-id.message-box__message
     = message.body
-  = image_tag message.image.url, class: 'message-box__image', if message.image.present?
+= image_tag message.image.url, class: 'message-box__image', if message.image.present?

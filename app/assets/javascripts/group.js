@@ -10,7 +10,9 @@ $(document).on('turbolinks:load', function() {
   };
 
   function appendNoUser(user) {
-    var html = ``
+    var html = `<div class='chat-group-user clearfix'>
+										<p class='chat-group-user__name'>${user}</p>
+									</div>`
     search_list.append(html);
   };
 

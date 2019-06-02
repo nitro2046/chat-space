@@ -3,7 +3,7 @@ $(function(){
   function buildHTML(message){
         var imagehtml = message.image == null ? "" : `<img src="${message.image}" class="message-box__image">`
         var html = `<div class="message-box">
-                      <div class="upper-info">
+                      <div class="upper-info"  id='${message.id}'>
                         <p class="upper-info__user">
                         ${message.user_name}
                         </p>
@@ -47,4 +47,35 @@ $(function(){
       alert('error');
     })
   });
+
+  $(function(){
+    setInterval(autoUpdate, 3000);
+    });
+    function autoUpdate() {
+      var url = window.location.href;
+      if (url.match(/\/groups\/\d+\/messages/)) {
+        var message_id = $('.upper-info').last().data('message-id');
+          $.ajax({
+          url: url,
+          type: 'GET',
+          data: { id: message_id },
+          dataType: 'json'
+        })
+        
+        .done(function(messages) {
+          if (messages.length !== 0) {
+            messages.forEach(function(message) {
+            var html = buildHTML(message);
+              $('.upper-info').append(html);
+              $('.upper-info').animate({scrollTop: $('.upper-info')[0].scrollHeight }, 'fast'); 
+            });
+          }
+        })
+        .fail(function() {
+          alert('自動更新に失敗しました');
+        })
+      } else {
+        clearInterval(autoUpdate);
+        }
+    };
 });

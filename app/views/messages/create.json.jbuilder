@@ -1,5 +1,5 @@
-json.body  @message.body
-json.created_at  @message.created_at.strftime('%Y/%m/%d %R')
-json.user_name  @message.user.name
-json.image  @message.image.url
-json.id     @message.id
+json.(@message, :body, :image)
+json.created_at @message.created_at.to_s
+json.user_name @message.user.name
+#idもデータとして渡す
+json.id @message.id

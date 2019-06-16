@@ -5,15 +5,16 @@ $(function(){
         var html = `<div class="message-box"  id='${message.id}'>
                       <div class="upper-info">
                         <p class="upper-info__user">
-                        ${message.user.name}
+                          ${message.user_name}
                         </p>
                         <p class="upper-info__datatime">
-                        ${message.created_at}
+                          ${message.created_at}
                         </p>
                       </div>
                       <div class="lower-message">
-                      <p class="lower-message__content"></p>
+                      <p class="lower-message__content">
                         ${message.body}
+                        </p>
                         ${imagehtml}
                       </div>                     
                     </div>`
@@ -23,7 +24,7 @@ $(function(){
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
     var formData = new FormData(this);
-    var href = window.location.href
+    var href = $(this).attr('action')
 
     $.ajax({
       url: href,
@@ -36,9 +37,9 @@ $(function(){
 
     .done(function(data){
       var html = buildHTML(data);
-      $('.message-box').append(html);
+      $('.body').append(html);
       $('.form__submit').prop("disabled", false);
-      $('.message-box').animate({scrollTop: $('.message-box')[0].scrollHeight});
+      $('.body').animate({scrollTop: $('.body')[0].scrollHeight});
       $('.form__message').val('');
       $('.hidden').val('');
       $('form')[0].reset();
@@ -49,17 +50,15 @@ $(function(){
     })
   });
 
-  $(function(){
     setInterval(autoUpdate, 3000);
-    });
     function autoUpdate() {
       var url = window.location.href;
       if (url.match(/\/groups\/\d+\/messages/)) {
         var message_id = $('.message-box').last().data('message-id');
           $.ajax({
-          url: url,
+          url: "api/messages",
           type: 'GET',
-          data: { id: message_id },
+          data: { last_id: message_id },
           dataType: 'json'
         })
         
@@ -80,4 +79,4 @@ $(function(){
         clearInterval(autoUpdate);
         }
     };
-});
+})

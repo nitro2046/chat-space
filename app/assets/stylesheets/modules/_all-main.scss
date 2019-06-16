@@ -40,7 +40,7 @@
     padding: 46px 40px;
     overflow: scroll;
     .message-box {
-      padding-bottom: 40px;
+      padding-bottom: 20px;
       .upper-info {
         display: flex;
         margin-bottom: 10px;
@@ -61,6 +61,9 @@
         font-size: 14px;
         &__image {
           width: 800px;
+        }
+        &__content {
+          margin-bottom: 10px;
         }
       }
     }

@@ -1,9 +1,11 @@
-.upper-info{ 'data-message-id': message.id}
-  %p.upper-info__user
-    = message.user.name
-  %p.upper-info__datatime
-    = message.created_at.to_s
-- if message.body.present?
-  %p#data-id.message-box__message
-    = message.body
-= image_tag message.image.url, class: 'message-box__image', if message.image.present?
+.message-box{"data-message-id": "#{message.id}"}
+  .upper-info
+    %p.upper-info__user
+      = message.user.name
+    %p.upper-info__datatime
+      = message.created_at.to_s
+  .lower-message
+    - if message.body.present?
+      %p.lower-message__content
+      = message.body
+    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?

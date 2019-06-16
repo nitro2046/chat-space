@@ -1,21 +1,22 @@
 $(function(){
-
+  
   function buildHTML(message){
-        var imagehtml = message.image == null ? "" : `<img src="${message.image}" class="message-box__image">`
-        var html = `<div class="message-box">
-                      <div class="upper-info"  id='${message.id}'>
+        var imagehtml = (message.image.url)? `<image class="lower-message_image" src="${message.image.url}">`:"";
+        var html = `<div class="message-box"  id='${message.id}'>
+                      <div class="upper-info">
                         <p class="upper-info__user">
-                        ${message.user_name}
+                        ${message.user.name}
                         </p>
                         <p class="upper-info__datatime">
                         ${message.created_at}
                         </p>
                       </div>
-                      <p class="message-box__message">
+                      <div class="lower-message">
+                      <p class="lower-message__content"></p>
                         ${message.body}
                         ${imagehtml}
-                      </p>
-                    </div> `
+                      </div>                     
+                    </div>`
         return html;
       }
 
@@ -36,7 +37,7 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.message-box').append(html);
-      $('.form__submit').prop( "disabled", false );
+      $('.form__submit').prop("disabled", false);
       $('.message-box').animate({scrollTop: $('.message-box')[0].scrollHeight});
       $('.form__message').val('');
       $('.hidden').val('');
@@ -54,7 +55,7 @@ $(function(){
     function autoUpdate() {
       var url = window.location.href;
       if (url.match(/\/groups\/\d+\/messages/)) {
-        var message_id = $('.upper-info').last().data('message-id');
+        var message_id = $('.message-box').last().data('message-id');
           $.ajax({
           url: url,
           type: 'GET',
@@ -66,8 +67,8 @@ $(function(){
           if (messages.length !== 0) {
             messages.forEach(function(message) {
             var html = buildHTML(message);
-              $('.message-box').append(html);
-              $('.message-box').animate({scrollTop: $('.message-box')[0].scrollHeight }, 'fast'); 
+              $('.body').append(html);
+              $('.body').animate({scrollTop: $('.body')[0].scrollHeight }); 
             });
           }
         })

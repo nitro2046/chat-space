@@ -55,13 +55,13 @@
           margin-left: 10px;
         }
       }
-      &__message {
-          color: #434a54;
-          font-size: 14px;
-          margin-bottom: 10px;
-      }
-      &__image {
-        width: 800px;
+      .lower-message {
+	      margin-top: 10px;
+        color: #434a54;
+        font-size: 14px;
+        &__image {
+          width: 800px;
+        }
       }
     }
   }

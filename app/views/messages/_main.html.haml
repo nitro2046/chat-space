@@ -11,9 +11,8 @@
     = link_to edit_group_path(@group.id) do
       .edit-btn
         Edit
-  .body
-    .message-box
-      = render @messages
+  .body   
+    = render @messages
   .form
     = form_for [@group, @message] do |f|
       = f.text_field :body, class: 'form__message', id: 'new_message', placeholder: 'type a message'

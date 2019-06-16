@@ -50,7 +50,7 @@ $(function(){
     })
   });
 
-    setInterval(autoUpdate, 3000);
+
     function autoUpdate() {
       var url = window.location.href;
       if (url.match(/\/groups\/\d+\/messages/)) {
@@ -60,18 +60,14 @@ $(function(){
           type: 'GET',
           data: { last_id: message_id },
           dataType: 'json'
-        })
-        
+        })       
         .done(function(messages) {
-          if (messages.length !== 0) {
             messages.forEach(function(message) {
             var html = buildHTML(message);
               $('.body').append(html);
               $('.body').animate({scrollTop: $('.body')[0].scrollHeight }); 
             });
-          }
-        })
-        
+        })       
         .fail(function() {
           alert('自動更新に失敗しました');
         })
@@ -79,4 +75,5 @@ $(function(){
         clearInterval(autoUpdate);
         }
     };
+    setInterval(autoUpdate, 3000);
 })

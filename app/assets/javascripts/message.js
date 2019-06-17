@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function(){
   
   function buildHTML(message){
         var imagehtml = (message.image.url)? `<image class="lower-message_image" src="${message.image.url}">`:"";
-        var html = `<div class="message-box"  id='${message.id}'>
+        var html = `<div class="message-box"  data-message-id='${message.id}'>
                       <div class="upper-info">
                         <p class="upper-info__user">
                           ${message.user_name}
@@ -52,15 +52,16 @@ $(document).on('turbolinks:load', function(){
     })
   });
 
+    setInterval(autoUpdate, 3000);
 
     function autoUpdate() {
       var url = window.location.href;
+      var message_id = $('.message-box').last().data('message-id');
       if (url.match(/\/groups\/\d+\/messages/)) {
-        var message_id = $('.message-box').last().data('message-id');
           $.ajax({
           url: "api/messages",
           type: 'GET',
-          data: { last_id: message_id },
+          data: { id: message_id },
           dataType: 'json'
         })       
         .done(function(messages) {
@@ -77,5 +78,4 @@ $(document).on('turbolinks:load', function(){
         clearInterval(autoUpdate);
         }
     };
-    setInterval(autoUpdate, 3000);
 })
